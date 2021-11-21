@@ -2,7 +2,6 @@ package model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "tblplayerinroom")
@@ -12,45 +11,40 @@ public class PlayerInRoom implements Serializable {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "status")
-    private String status;
+    @Column(name ="role")
+    private String role;
 
-    @OneToMany(mappedBy = "playerInRoom", cascade = CascadeType.ALL)
-    private List<Player> listPlayer;
+    @OneToOne
+    @JoinColumn(name = "idPlayer")
+    private Player player;
 
     @ManyToOne
     @JoinColumn(name = "idRoom")
     private Room room;
-
+    
     public PlayerInRoom() {
     }
 
-    public PlayerInRoom(String status) {
-        this.status = status;
+    public PlayerInRoom(String role, Player player, Room room) {
+        this.role = role;
+        this.player = player;
+        this.room = room;
     }
 
-    public int getId() {
-        return id;
+    public String getRole() {
+        return role;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getStatus() {
-        return status;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public List<Player> getListPlayer() {
-        return listPlayer;
-    }
-
-    public void setListPlayer(List<Player> listPlayer) {
-        this.listPlayer = listPlayer;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public Room getRoom() {

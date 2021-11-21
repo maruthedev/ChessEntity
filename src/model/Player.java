@@ -33,17 +33,15 @@ public class Player implements Serializable {
     @OneToMany(mappedBy = "player1", cascade = CascadeType.ALL)
     private List<BeFriend> listBeFriend1;
 
-    @ManyToOne
-    @JoinColumn(name = "idPlayerInRoom")
-    public PlayerInRoom playerInRoom;
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
+    private PlayerInRoom playerInRoom;
 
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL)
-    public List<ParticipateATournament> listParticipateATournament;
+    private List<ParticipateATournament> listParticipateATournament;
 
     @ManyToOne
     @JoinColumn(name = "idPlayerInGroup")
-    public Group group;
-
+    private Group group;
 
     @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
     public PlayerRanking playerRanking;
