@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class ObjectWrapper  implements Serializable{
+public class ObjectWrapper implements Serializable {
     private static final long serialVersionUID = 20210811011L;
     public static final int LOGIN_USER = 1;
     public static final int REPLY_LOGIN_USER = 2;
@@ -23,26 +23,38 @@ public class ObjectWrapper  implements Serializable{
     public static final int REPLY_RANK = 17;
     public static final int ACCEPT_FRIEND = 18;
     public static final int REPLY_ACCEPT_FRIEND = 19;
+    public static final int DELETE_FRIEND = 20;
+    public static final int REPLY_DELETE_FRIEND = 21;
+    public static final int MOVE = 22;
+    public static final int REP_MOVE = 23;
+    public static final int O_MOVE = 24;
+    public static final int REP_O_MOVE = 25;
 
     private int performative;
     private Object data;
+
     public ObjectWrapper() {
         super();
     }
+
     public ObjectWrapper(int performative, Object data) {
         super();
         this.performative = performative;
         this.data = data;
     }
+
     public int getPerformative() {
         return performative;
     }
+
     public void setPerformative(int performative) {
         this.performative = performative;
     }
+
     public Object getData() {
         return data;
     }
+
     public void setData(Object data) {
         this.data = data;
     }

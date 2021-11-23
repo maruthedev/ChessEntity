@@ -29,7 +29,7 @@ public class Tournament implements Serializable {
     private List<ParticipateATournament> listParticipateATournament;
 
     @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL)
-    private List<Room> listRoom;
+    private List<Match> matches;
 
     @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL)
     private TournamentRanking tournamentRanking;
@@ -91,12 +91,12 @@ public class Tournament implements Serializable {
         this.listParticipateATournament = listParticipateATournament;
     }
 
-    public List<Room> getListRoom() {
-        return listRoom;
+    public List<Match> getMatches() {
+        return matches;
     }
 
-    public void setListRoom(List<Room> listRoom) {
-        this.listRoom = listRoom;
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
     }
 
     public TournamentRanking getTournamentRanking() {

@@ -3,6 +3,7 @@ package model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tblmatch")
@@ -12,22 +13,25 @@ public class Match implements Serializable {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "startTime")
-    private LocalDateTime startTime;
+    @Column(name = "status")
+    private String status;
 
-    @Column(name = "result")
-    private String result;
+    @Column(name = "movement")
+    private String movement;
 
-    @OneToOne
-    @JoinColumn(name = "idRoom")
-    private Room room;
+    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
+    private List<Player> players;
+
+    @ManyToOne
+    @JoinColumn(name = "idTournament")
+    private Tournament tournament;
 
     public Match() {
     }
 
-    public Match(LocalDateTime startTime, String result) {
-        this.startTime = startTime;
-        this.result = result;
+    public Match(List<Player> players) {
+        this.status = null;
+        this.players = players;
     }
 
     public int getId() {
@@ -38,27 +42,35 @@ public class Match implements Serializable {
         this.id = id;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getResult() {
-        return result;
+    public List<Player> getPlayers() {
+        return players;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
 
-    public Room getRoom() {
-        return room;
+    public String getMovement() {
+        return movement;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setMovement(String movement) {
+        this.movement = movement;
+    }
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 }

@@ -33,18 +33,19 @@ public class Player implements Serializable {
     @OneToMany(mappedBy = "player1", cascade = CascadeType.ALL)
     private List<BeFriend> listBeFriend1;
 
-    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
-    private PlayerInRoom playerInRoom;
+    @ManyToOne
+    @JoinColumn(name = "idMatch")
+    private Match match;
 
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL)
     private List<ParticipateATournament> listParticipateATournament;
 
     @ManyToOne
-    @JoinColumn(name = "idPlayerInGroup")
+    @JoinColumn(name = "idGroup")
     private Group group;
 
     @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
-    public PlayerRanking playerRanking;
+    private PlayerRanking playerRanking;
 
     public Player(){}
 
@@ -120,12 +121,20 @@ public class Player implements Serializable {
         this.listBeFriend = listBeFriend;
     }
 
-    public PlayerInRoom getPlayerInRoom() {
-        return playerInRoom;
+    public List<BeFriend> getListBeFriend1() {
+        return listBeFriend1;
     }
 
-    public void setPlayerInRoom(PlayerInRoom playerInRoom) {
-        this.playerInRoom = playerInRoom;
+    public void setListBeFriend1(List<BeFriend> listBeFriend1) {
+        this.listBeFriend1 = listBeFriend1;
+    }
+
+    public Match getMatch() {
+        return match;
+    }
+
+    public void setMatch(Match match) {
+        this.match = match;
     }
 
     public List<ParticipateATournament> getListParticipateATournament() {
@@ -136,27 +145,19 @@ public class Player implements Serializable {
         this.listParticipateATournament = listParticipateATournament;
     }
 
-    public PlayerRanking getPlayerRanking() {
-        return playerRanking;
-    }
-
-    public void setPlayerRanking(PlayerRanking playerRanking) {
-        this.playerRanking = playerRanking;
-    }
-
-    public List<BeFriend> getListBeFriend1() {
-        return listBeFriend1;
-    }
-
-    public void setListBeFriend1(List<BeFriend> listBeFriend1) {
-        this.listBeFriend1 = listBeFriend1;
-    }
-
     public Group getGroup() {
         return group;
     }
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public PlayerRanking getPlayerRanking() {
+        return playerRanking;
+    }
+
+    public void setPlayerRanking(PlayerRanking playerRanking) {
+        this.playerRanking = playerRanking;
     }
 }
