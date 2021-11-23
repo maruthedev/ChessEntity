@@ -26,7 +26,8 @@ public class ParticipateATournament implements Serializable {
     public ParticipateATournament() {
     }
 
-    public ParticipateATournament(LocalDateTime registrationTime) {
+    public ParticipateATournament(Player player, LocalDateTime registrationTime) {
+        this.player = player;
         this.registrationTime = registrationTime;
     }
 

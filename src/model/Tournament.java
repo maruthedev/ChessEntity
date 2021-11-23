@@ -31,12 +31,10 @@ public class Tournament implements Serializable {
     @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL)
     private List<Match> matches;
 
-    @OneToOne(mappedBy = "tournament", cascade = CascadeType.ALL)
-    private TournamentRanking tournamentRanking;
+    public Tournament() {
+    }
 
-    public Tournament(){}
-
-    public Tournament(String name, LocalDateTime registrationTimeTo, LocalDateTime startTime, LocalDateTime endTime){
+    public Tournament(String name, LocalDateTime registrationTimeTo, LocalDateTime startTime, LocalDateTime endTime) {
         this.name = name;
         this.registrationTimeTo = registrationTimeTo;
         this.startTime = startTime;
@@ -97,13 +95,5 @@ public class Tournament implements Serializable {
 
     public void setMatches(List<Match> matches) {
         this.matches = matches;
-    }
-
-    public TournamentRanking getTournamentRanking() {
-        return tournamentRanking;
-    }
-
-    public void setTournamentRanking(TournamentRanking tournamentRanking) {
-        this.tournamentRanking = tournamentRanking;
     }
 }

@@ -44,12 +44,10 @@ public class Player implements Serializable {
     @JoinColumn(name = "idGroup")
     private Group group;
 
-    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
-    private PlayerRanking playerRanking;
+    public Player() {
+    }
 
-    public Player(){}
-
-    public Player(String username, String password){
+    public Player(String username, String password) {
         this.username = username;
         this.password = password;
         this.status = "";
@@ -57,7 +55,7 @@ public class Player implements Serializable {
         this.loses = 0;
     }
 
-    public Player(String username, String password, String status, int wins, int loses){
+    public Player(String username, String password, String status, int wins, int loses) {
         this.username = username;
         this.password = password;
         this.status = status;
@@ -151,13 +149,5 @@ public class Player implements Serializable {
 
     public void setGroup(Group group) {
         this.group = group;
-    }
-
-    public PlayerRanking getPlayerRanking() {
-        return playerRanking;
-    }
-
-    public void setPlayerRanking(PlayerRanking playerRanking) {
-        this.playerRanking = playerRanking;
     }
 }

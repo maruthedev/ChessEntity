@@ -35,7 +35,7 @@ public class BeFriend implements Serializable {
         this.intimacy = intimacy;
     }
 
-    public BeFriend(int inti, String stt, Player player, Player other){
+    public BeFriend(int inti, String stt, Player player, Player other) {
         this.intimacy = inti;
         this.status = stt;
         this.player = player;

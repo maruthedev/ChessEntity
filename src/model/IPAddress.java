@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class IPAddress implements Serializable{
+public class IPAddress implements Serializable {
     private static final long serialVersionUID = 20210811012L;
     private String host;
     private int port;

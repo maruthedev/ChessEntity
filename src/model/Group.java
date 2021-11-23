@@ -15,6 +15,12 @@ public class Group implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "num_of_mem")
+    private int num_of_mem;
+
+    @Column(name = "note")
+    private String note;
+
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<Player> listPlayer;
 
@@ -48,5 +54,20 @@ public class Group implements Serializable {
     public void setListPlayer(List<Player> listPlayer) {
         this.listPlayer = listPlayer;
     }
-    
+
+    public int getNum_of_mem() {
+        return num_of_mem;
+    }
+
+    public void setNum_of_mem(int num_of_mem) {
+        this.num_of_mem = num_of_mem;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 }
