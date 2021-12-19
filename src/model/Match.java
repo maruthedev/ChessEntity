@@ -34,6 +34,12 @@ public class Match implements Serializable {
         this.players = players;
     }
 
+    public Match(List<Player> players, String movement) {
+        this.status = null;
+        this.players = players;
+        this.movement = movement;
+    }
+
     public int getId() {
         return id;
     }
